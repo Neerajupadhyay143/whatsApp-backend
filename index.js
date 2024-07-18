@@ -17,10 +17,8 @@ connectDB()
 // })
 app.use(bodyParser.json({ extended: true }))
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cors({
-    origin: ['http://localhost:3000', 'https://whats-app-clone-2-tawny.vercel.app/'],
-}));
+app.use(cors())
 app.use('/', route)
 app.listen(PORT, () => {
     console.log(`we are on ${PORT} PORT `)
-})
+}) 
