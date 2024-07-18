@@ -7,7 +7,7 @@ import bodyParser from "body-parser";
 import { adduser } from "./controllers/user-controller.js";
 const app = express();
 dotenv.config();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 
 
 connectDB()
