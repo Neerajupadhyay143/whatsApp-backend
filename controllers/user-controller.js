@@ -3,26 +3,46 @@ import User from "../models/User.models.js"
 import multer from 'multer';
 
 export const adduser = async (req, res) => {
-    try {
+    // try {
 
-        const exist = await User.findOne({ sub: req.body.sub });
+    //     const exist = await User.findOne({ sub: req.body.sub });
+
+    //     if (exist) {
+    //         res.status(200).json({ msg: "user already exist" })
+    //         return;
+    //     }
+
+    //     const newUser = new User(req.body);
+    //     newUser.username = newUser.given_name;
+    //     console.log(newUser)
+    //     await newUser.save();
+    //     return res.status(200).json(newUser)
+
+    // } catch (error) {
+    //     return res.status(500).json(error.message)
+    // }
+    try {
+        const { sub, given_name } = req.body;
+
+        if (!sub || !given_name) {
+            return res.status(400).json({ msg: "Missing required fields" });
+        }
+
+        const exist = await User.findOne({ sub });
 
         if (exist) {
-            res.status(200).json({ msg: "user already exist" })
-            return;
+            return res.status(200).json({ msg: "User already exists" });
         }
-        // let newUser = new User(req.body);
-        // let tempUser = { ...newUser, "username": newUser.given_name }
-        // newUser = tempUser
-        const newUser = new User(req.body);
-        newUser.username = newUser.given_name;
-        console.log(newUser)
-        await newUser.save();
-        return res.status(200).json(newUser)
 
+        const newUser = new User(req.body);
+        newUser.username = given_name;
+
+        await newUser.save();
+        return res.status(200).json(newUser);
     } catch (error) {
-        return res.status(500).json(error.message)
+        return res.status(500).json({ msg: error.message });
     }
+
 }
 
 export const getUsers = async (req, res) => {
