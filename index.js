@@ -15,9 +15,10 @@ connectDB()
 // app.get('/home', (req, res) => {
 //     res.send(" this is my backend home page")
 // })
+app.use(cors())
 app.use(bodyParser.json({ extended: true }))
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cors())
+
 app.use('/', route)
 app.listen(PORT, () => {
     console.log(`we are on ${PORT} PORT `)
