@@ -11,7 +11,7 @@ export const adduser = async (req, res) => {
     //         res.status(200).json({ msg: "user already exist" })
     //         return;
     //     }
-
+ 
     //     const newUser = new User(req.body);
     //     newUser.username = newUser.given_name;
     //     console.log(newUser)
