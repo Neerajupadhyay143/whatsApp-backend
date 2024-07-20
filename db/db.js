@@ -4,7 +4,7 @@ import { Database_name } from "../constant.js";
 
 const connectDB = async () => {
 
-    const port = process.env.PORT
+    const port = process.env.PORT || 8000
 
     const URL = process.env.DATABASE_URL
     try {
