@@ -11,7 +11,7 @@ export const adduser = async (req, res) => {
     //         res.status(200).json({ msg: "user already exist" })
     //         return;
     //     }
- 
+
     //     const newUser = new User(req.body);
     //     newUser.username = newUser.given_name;
     //     console.log(newUser)
@@ -51,7 +51,7 @@ export const getUsers = async (req, res) => {
         return res.status(200).json(users);
 
     } catch (error) {
-        return res.status(500).json(error.message)
+        return res.status(500).json({ msg: error.message });
     }
 }
 
