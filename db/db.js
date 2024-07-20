@@ -8,7 +8,7 @@ const connectDB = async () => {
 
     const URL = process.env.DATABASE_URL
     try {
-        const connectionInstance = await mongoose.connect(`${URL}${Database_name}`)
+        const connectionInstance = await mongoose.connect(`${"mongodb+srv://whatsappneeraj:neerajwhatsapp@cluster0.aszkvny.mongodb.net/"}${Database_name}`)
 
         console.log(`! mongoDB connected ${connectionInstance.connection.host} ${Database_name} ${port}`);
     } catch (error) {
