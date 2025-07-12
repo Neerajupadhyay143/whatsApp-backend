@@ -1,25 +1,39 @@
-import express from "express"
-import dotenv from "dotenv"
+import express from "express";
+import dotenv from "dotenv";
 import connectDB from "./db/db.js";
-import cors from "cors"
+import cors from "cors";
 import route from "./routes/route.js";
 import bodyParser from "body-parser";
-import { adduser } from "./controllers/user-controller.js";
+
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 8000;
 
 
-connectDB()
+connectDB();
 
-// app.get('/home', (req, res) => {
-//     res.send(" this is my backend home page")
-// })
-app.use(cors())
-app.use(bodyParser.json({ extended: true }))
-app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/', route)
+app.use(
+    cors({
+        origin: ["http://localhost:3000", "https://whats-app-clone-2-sigma.vercel.app"],
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true,
+    })
+);
+
+
+app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+app.get("/", (req, res) => {
+    res.send("✅ WhatsApp Clone Backend is running successfully!");
+});
+
+
+app.use("/", route);
+
+// Start Server
 app.listen(PORT, () => {
-    console.log(`we are on ${PORT} PORT `)
-}) 
+    console.log(`🚀 Backend server live on PORT ${PORT}`);
+});
