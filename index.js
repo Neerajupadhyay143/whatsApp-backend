@@ -15,7 +15,7 @@ connectDB();
 
 app.use(
     cors({
-        origin: [process.env.CORS_ORIGIN],
+        origin: ["https://whats-app-clone-2-smoky.vercel.app/"],
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true,
     })
