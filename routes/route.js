@@ -14,6 +14,7 @@ route.post('/communication/add', newCommunication)
 route.post('/communication/get', getCommunication)
 route.post('/message/add', newMessage)
 route.get('/message/get/:id', getMessages)
+// route.post('/message/get', getMessages)
 
 
 export default route;
